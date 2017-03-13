@@ -1,5 +1,5 @@
 ## Sample State
-
+````
 {
   messageDisplay: {
     4: {
@@ -35,3 +35,4 @@
   recentConversations: [1, 2, 3],
   recentChannels: [1, 2]
 }
+````
