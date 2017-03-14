@@ -28,3 +28,8 @@
 * ````POST /api/channels````
 * ````PATCH /api/channels/:id````
 * ````DELETE /api/channels/:id````
+
+### Session
+
+* ````POST /api/session````
+* ````DELETE /api/session````
