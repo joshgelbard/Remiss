@@ -16,7 +16,7 @@
 
 ### Messages
 
-* ````GET /api/:channelId/messages````
+* ````GET /api/channels/:id/messages````
 * ````POST /api/messages````
 * ````GET /api/messages/:id````
 * ````PATCH /api/messages/:id````
