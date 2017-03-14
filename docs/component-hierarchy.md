@@ -32,15 +32,11 @@
 
         * ChannelIndexItem
 
-### ChannelHeaderContainer
+### ChannelHeader
 
-  * ChannelHeader
+### ChannelDetailDisplay
 
-### ChannelDetailDisplayContainer
-
-  * ChannelDetailDisplayIndex
-
-    * ChannelDetailDisplayItem
+  * ChannelDetailDisplayItem
 
 ### ConversationChooserContainer
 
