@@ -31,14 +31,14 @@ There will be adequate styling, smooth, bug-free navigation, and adequate and ap
 
 Users can sign up, log in, and log out through webpage. Demo account.
 
-### Phase 2: Live chat -- 3 days
+### Phase 2: Public channels -- 2 days
 
-Users can send messages that appear in one premade channel.
+Channels can be created, modified and deleted. Channels have users.
 
-### Phase 3: Public channels -- 3 days
+### Phase 3: Live chat -- 2 days
 
-Users can choose which channel to view and post to. Users can modify or add channels.
+Users can send messages within channels.
 
-### Phase 4: DM and group DM -- 1 day
+### Phase 4: DM and group DM -- 2 days
 
 Users can message each other privately, one-to-one or in groups.
