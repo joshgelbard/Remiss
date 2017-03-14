@@ -25,6 +25,7 @@
 ### Channels
 
 * ````GET /api/channels````
+* ````GET /api/channels/:id````
 * ````POST /api/channels````
 * ````PATCH /api/channels/:id````
 * ````DELETE /api/channels/:id````
