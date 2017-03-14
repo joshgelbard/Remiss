@@ -73,9 +73,13 @@
 
 |Path   | Component   |
 |-------|-------------|
-| "/signup" | "AuthFormContainer" |
-| "/signin" | "AuthFormContainer" |
+| "/" | redirect to /messages |
+| "/messages" | redirect to /messages/<last_visited_channel> |
 | "/messages/:channelName(/details)" | "ChatAreaContainer" |
 | "/channels" | "ChannelChooserContainer" |
 | "/channels/new" | "CreateChannelFormContainer" |
 | "/conversations" | "ConversationChooserContainer" |
+| "/signup" | "AuthFormContainer" |
+| "/signin" | "AuthFormContainer" |
+
+Everything except signup/signin redirects to AuthFormContainer if you try to visit when you're not logged in.
