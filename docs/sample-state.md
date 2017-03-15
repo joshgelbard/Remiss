@@ -27,9 +27,9 @@
     ]
   },
 
-  currentUser: {
-    id: 1,
-    username: "Sarah"
+  session: {
+    currentUser: {id: 2, username: "Jon"},
+    errors: []
   },
 
   numberOfChannels: 2,
@@ -42,11 +42,6 @@
   visibleConversations: {
     1: { id: 1, participants: [{id: 2, username: "Jon"}] }
     2: { id: 2, participants: [{id: 1, username: "Sarah"}, {id: 2, username: "Jon"}] }
-  },
-
-  formErrors: {
-    signup: [],
-    signin: []
   }
 }
 ````
