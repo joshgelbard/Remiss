@@ -1,6 +1,7 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
+import { logout } from '../actions/session_actions';
 import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import MessagesPlaceholder from './messages_placeholder';
@@ -30,6 +31,10 @@ const Root = ({store}) => {
     }
   };
 
+  const _logout = () => {
+    store.dispatch(logout());
+  };
+
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
@@ -38,6 +43,7 @@ const Root = ({store}) => {
           <Route path= '/messages' component={ MessagesPlaceholder } onEnter={ _redirectUnlessLoggedIn } />
           <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
+          <Route path='/logout' onEnter={ _logout } />
         </Route>
       </Router>
     </Provider>
