@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: channels
+#
+#  id           :integer          not null, primary key
+#  name         :string           not null
+#  channel_type :string           not null
+#  purpose      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  channel_type: MyString
+  purpose: MyText
+
+two:
+  name: MyString
+  channel_type: MyString
+  purpose: MyText
