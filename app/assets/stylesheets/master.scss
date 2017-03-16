@@ -1,0 +1,28 @@
+body, html {
+  font-family: Lato, sans-serif;
+  background-color: #f9f9f9;
+  color: #555459;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  vertical-align: middle;
+}
+
+h1 {
+  font-size: 32px;
+  font-weight: 600;
+}
+
+strong {
+  font-weight: bold;
+}
+
+a {
+  color: #2780F8;
+  &:hover {
+    text-decoration: underline;
+  }
+}
