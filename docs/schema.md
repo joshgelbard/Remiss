@@ -26,7 +26,7 @@ name            | string         | not null, indexed, unique            |
 channel_type    | string         | not null                             |
 purpose         | text           |                                      |
 
-## Subscriptions
+## ChannelMemberships
 
 column          |    data type   |  details                             |
 ----------------|----------------|--------------------------------------|
