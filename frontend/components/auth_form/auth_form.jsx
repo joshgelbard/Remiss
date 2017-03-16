@@ -25,7 +25,8 @@ class AuthForm extends React.Component {
   alternateFormLink() {
     if (this.props.formType === 'signin') {
       return (<p className='auth-footer'>Don't have an account yet? <Link to='/signup'>Sign up! </Link>
-    Or <Link to='/guest_login'>log in as guest.</Link></p>);
+    Or <Link
+      onClick={() => this.props.guestLogin().then(() => this.redirect())}>log in as guest.</Link></p>);
     } else {
       return (<p className='auth-footer'>Already have an account? <Link to='/signin'>Click here to sign in.</Link></p>);
     }
@@ -63,6 +64,18 @@ class AuthForm extends React.Component {
     }
   }
 
+  guestLoginLink() {
+    if (this.props.formType === 'signup' ) {
+      return (
+        <p>Or try a <Link
+          onClick={() => this.props.guestLogin().then(() => this.redirect())}>guest account
+        </Link></p>
+      );
+    } else {
+      return <p> </p>;
+    }
+  }
+
   render() {
     const { username, password } = this.state;
 
@@ -75,6 +88,7 @@ class AuthForm extends React.Component {
               <input type='text' value={username} onChange={ this.update('username') } placeholder="username" />
               <input type='password' value={password} onChange={ this.update('password') } placeholder="password"/>
               <input type='submit' value={this.props.formType === 'signup' ? "Create Account" : "Sign in"} />
+              { this.guestLoginLink.bind(this)() }
             </form>
           </div>
           { this.alternateFormLink.bind(this)() }

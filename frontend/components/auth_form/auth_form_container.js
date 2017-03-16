@@ -11,7 +11,15 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const action = ownProps.location.pathname.match(/signup/) ? signup : login;
-  return { processForm: user => dispatch(action(user)) };
+  const guestLogin = () => {
+    const guestAccountNum = Math.floor(Math.random() * 100);
+    const guestAccount = { username: `guest_${guestAccountNum}`, password: 'password' };
+    return dispatch(login(guestAccount));
+  };
+  return {
+    processForm: user => dispatch(action(user)),
+    guestLogin
+  };
 };
 
 const AuthFormContainer = connect(mapStateToProps, mapDispatchToProps)(AuthForm);
