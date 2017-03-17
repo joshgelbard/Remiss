@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { fetchChannels } from '../actions/channel_actions';
+import { channelsList } from '../reducers/selectors.js';
 
 class MessagesPlaceholder extends React.Component {
   constructor(props){
@@ -27,7 +28,7 @@ class MessagesPlaceholder extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  return { channels: Object.keys(state.channelsList.channels).map(k => state.channelsList.channels[k]) }
+  return { channels: channelsList(state) };
 };
 
 const mapDispatchToProps = (dispatch) => {
