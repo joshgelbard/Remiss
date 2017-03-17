@@ -18,6 +18,7 @@ class MessagesPlaceholder extends React.Component {
     return (
       <div>
         <Link to='/new-channel'>New channel</Link>
+        <Link to='/browse-channels'>Browse channels</Link>
         <h1>Messages go here!</h1>
         <p>Channels: {this.props.channels.length}</p>
       </div>
