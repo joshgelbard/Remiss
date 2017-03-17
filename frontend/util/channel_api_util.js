@@ -12,3 +12,17 @@ export const fetchChannels = () => {
     method: 'GET'
   });
 };
+
+export const fetchChannel = channelId => {
+  return $.ajax({
+    url: `/api/channels/${channelId}`,
+    method: 'GET'
+  });
+};
+
+export const joinChannel = channelId => {
+  return $.ajax({
+    url: `/api/channels/${channelId}/join`,
+    method: 'GET'
+  });
+};

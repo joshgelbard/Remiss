@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-import { fetchChannels } from '../actions/channel_actions';
+import { fetchChannels, fetchChannel } from '../actions/channel_actions';
 import { channelsList } from '../reducers/selectors.js';
 
 class MessagesPlaceholder extends React.Component {
@@ -12,6 +12,7 @@ class MessagesPlaceholder extends React.Component {
 
   componentWillMount() {
     this.props.fetchChannels();
+    this.props.fetchChannel(this.props.currentChannel.id);
   }
 
   render() {
@@ -21,6 +22,8 @@ class MessagesPlaceholder extends React.Component {
         <Link to='/browse-channels'>Browse channels</Link>
         <h1>Messages go here!</h1>
         <p>Channels: {this.props.channels.length}</p>
+        <p>Current channel: {this.props.currentChannel.name}</p>
+        <p>Channel members: {this.props.currentChannel.members.length}</p>
       </div>
     );
   }
@@ -29,12 +32,13 @@ class MessagesPlaceholder extends React.Component {
 
 
 const mapStateToProps = (state) => {
-  return { channels: channelsList(state) };
+  return { channels: channelsList(state), currentChannel: state.currentChannel };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchChannels: () => dispatch(fetchChannels())
+    fetchChannels: () => dispatch(fetchChannels()),
+    fetchChannel: (channelId) => dispatch(fetchChannel(channelId))
   };
 };
 

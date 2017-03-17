@@ -22,6 +22,21 @@ class Api::ChannelsController < ApplicationController
     render :index
   end
 
+  def show
+    @channel = Channel.find(params[:id])
+    render :show
+  end
+
+  def join
+    @channel = Channel.find(params[:id])
+    if @channel.allow_user?(current_user)
+      ChannelMembership.create(user_id: current_user.id, channel_id: @channel.id)
+      render :show
+    else
+      render json: ["User not allowed to join this channel"]
+    end
+  end
+
   private
 
   def channel_params

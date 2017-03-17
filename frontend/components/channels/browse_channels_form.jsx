@@ -8,9 +8,13 @@ class BrowseChannelsForm extends React.Component {
     console.log('browse channels form props=', props);
   }
 
+  handleClick(e, channelId) {
+    this.props.joinChannel(channelId);
+  }
+
   channelsList(){
     const listItems = this.props.channels.map( (channel, idx) => (
-      <ChannelIndexItem channel={ channel } key={`chan-${idx}`}/>
+      <ChannelIndexItem channel={ channel } key={`chan-${idx}`} onClick={e => this.handleClick(e, channel.id)}/>
     ));
     return (
       <ul>
@@ -28,7 +32,7 @@ class BrowseChannelsForm extends React.Component {
       <div className='browse-channels-form-container'>
         <form className='browse-channels-form'>
           <h1>Browse all {this.props.channels.length} channels</h1>
-          { this.channelsList() }
+          { this.channelsList.bind(this)() }
         </form>
       </div>
    );

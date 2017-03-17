@@ -18,4 +18,8 @@ class Channel < ApplicationRecord
   has_many :members,
   through: :channel_memberships,
   source: :user
+
+  def allow_user?(user)
+    true
+  end
 end
