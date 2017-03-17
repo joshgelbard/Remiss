@@ -32,6 +32,13 @@ class AuthForm extends React.Component {
     }
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.formType !== newProps.formType) {
+      this.props.clearErrors();
+      this.setState({ username: "", password: "" });
+    }
+  }
+
   instruction() {
     if (this.props.formType === 'signin') {
       return (
