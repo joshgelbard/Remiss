@@ -1,0 +1,44 @@
+.browse-channels-form-container {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  h1 {
+    font-weight: 900;
+    margin-bottom: 50px;
+  }
+
+}
+
+.browse-channels-form {
+  height: 100%;
+  width: 640px;
+}
+
+.browse-channels-row {
+  width: 620px;
+  padding: 10px;
+  border-bottom: 1px solid #e8e8e8;
+
+  .channel-name {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .creation-info {
+    font-size: 14px;
+    font-family: Lato Light Italic, Lato, Italic;
+  }
+
+  .purpose {
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: #EDF7FD;
+  }
+}

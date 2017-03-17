@@ -1,15 +1,18 @@
-body, html {
+body {
   font-family: Lato, sans-serif;
   background-color: #f9f9f9;
   color: #555459;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  vertical-align: middle;
+  display: block;
   box-sizing: border-box;
+}
+
+#root, html, body, [data-reactroot] {
+  width: 100%;
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 h1 {

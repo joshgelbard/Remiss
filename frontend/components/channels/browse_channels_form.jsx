@@ -14,12 +14,17 @@ class BrowseChannelsForm extends React.Component {
 
   channelsList(){
     const listItems = this.props.channels.map( (channel, idx) => (
-      <ChannelIndexItem channel={ channel } key={`chan-${idx}`} onClick={e => this.handleClick(e, channel.id)}/>
+      <ChannelIndexItem
+        channel={ channel }
+        key={`chan-${idx}`}
+        onClick={e => this.handleClick(e, channel.id)} />
     ));
     return (
-      <ul>
-        { listItems }
-      </ul>
+      <label>Channels you can join
+        <ul>
+          { listItems }
+        </ul>
+      </label>
     );
   }
 
