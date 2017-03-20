@@ -1,0 +1,48 @@
+.new-channel-form-container {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    font-weight: 900;
+  }
+
+}
+
+.new-channel-form {
+  width: 640px;
+  height: 500px;
+  justify-content: space-around;
+
+  input, button {
+    padding-left: 15px;
+    width: 640px;
+    height: 42px;
+    font-size: 18px;
+    border: 1px solid #AAAAAA;
+    border-radius: 4px;
+    text-align: left;
+  }
+
+  button {
+    background-color: inherit;
+    color: #555459;
+    margin-right: 15px;
+  }
+}
+
+.new-channel-buttons-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  input, button {
+    width:auto;
+    text-align: center;
+    padding: 0px 10px;
+  }
+}

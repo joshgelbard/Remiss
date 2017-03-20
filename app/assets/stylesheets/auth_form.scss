@@ -2,10 +2,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
 .card {
-  width: 350px;
+  width: 614px;
   background-color: white;
   padding-left: 132px;
   padding-right: 132px;

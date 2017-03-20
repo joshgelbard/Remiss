@@ -1,13 +1,18 @@
-body, html {
+body {
   font-family: Lato, sans-serif;
   background-color: #f9f9f9;
   color: #555459;
-  height: 100%;
+  display: block;
+  box-sizing: border-box;
+}
+
+#root, html, body, [data-reactroot] {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  height: 100%;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 h1 {
@@ -24,4 +29,44 @@ a {
   &:hover {
     text-decoration: underline;
   }
+}
+
+input {
+  border: 1px solid #AAAAAA;
+  border-radius: 4px;
+  text-align: left;
+
+  &[type='text']:hover, &[type='password']:hover {
+    border: 1px solid #2780F8;
+  }
+
+  &[type='text']:focus, &[type='password']:focus {
+    border: 1px solid #2780F8;
+    -webkit-box-shadow: 0px 0px 6px #C6D6F8;
+    -moz-box-shadow: 0px 0px 6px #C6D6F8;
+    box-shadow: 0px 0px 6px #C6D6F8;
+  }
+
+  &[type='submit'] {
+    text-align: center;
+    background-color: #2AB27B;
+    color: white;
+    border: 3px solid #2AB27B;
+
+    &:hover {
+      border-bottom-color: #20865D;
+    }
+  }
+}
+
+button {
+  text-align: center;
+  background-color: #2AB27B;
+  color: white;
+  border: 3px solid #2AB27B;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
 }

@@ -5,6 +5,8 @@ import { logout } from '../actions/session_actions';
 import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import MessagesPlaceholder from './messages_placeholder';
+import NewChannelFormContainer from './channels/new_channel_form_container';
+import BrowseChannelsFormContainer from './channels/browse_channels_form_container';
 
 const Root = ({store}) => {
 
@@ -44,6 +46,8 @@ const Root = ({store}) => {
           <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
           <Route path='/logout' onEnter={ _logout } />
+          <Route path='/new-channel' component={ NewChannelFormContainer } onEnter={ _redirectUnlessLoggedIn } />
+          <Route path='/browse-channels' component={ BrowseChannelsFormContainer } onEnter={ _redirectUnlessLoggedIn } />
         </Route>
       </Router>
     </Provider>
