@@ -36,7 +36,7 @@ class NewChannelForm extends React.Component {
                onChange={this.update('purpose')}/>
           </label>
           <div className='new-channel-buttons-row'>
-            <button onClick={this.redirect.bind(this)}>Cancel</button>
+            <button type='button' onClick={this.redirect.bind(this)}>Cancel</button>
             <input type='submit' value='Create Channel' />
           </div>
         </form>
