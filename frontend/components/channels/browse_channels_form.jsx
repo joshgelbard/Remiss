@@ -8,8 +8,13 @@ class BrowseChannelsForm extends React.Component {
     console.log('browse channels form props=', props);
   }
 
+  redirect() {
+    this.props.router.push('/messages');
+  }
+
   handleClick(e, channelId) {
-    this.props.joinChannel(channelId);
+    this.props.joinChannel(channelId)
+      .then(() => this.redirect());
   }
 
   channelsList(){
