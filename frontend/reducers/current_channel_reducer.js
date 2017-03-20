@@ -6,7 +6,7 @@ const nullChannel = {id: undefined, name: undefined, members: []};
 const CurrentChannelReducer = (state = nullChannel, action) => {
   switch (action.type) {
     case RECEIVE_CHANNEL:
-      return merge({}, state, action.channel);
+      return action.channel;
     default:
       return state;
   }

@@ -21,6 +21,7 @@ class User < ApplicationRecord
 
   has_many :channel_memberships, dependent: :destroy
   has_many :channels, through: :channel_memberships
+  has_many :messages
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)

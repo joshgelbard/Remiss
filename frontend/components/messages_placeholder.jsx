@@ -15,6 +15,16 @@ class MessagesPlaceholder extends React.Component {
     this.props.fetchChannel(this.props.currentChannel.id);
   }
 
+  channelMessages() {
+    if (this.props.currentChannel.messages){
+      return this.props.currentChannel.messages.map( (message, idx) => (
+        <li key={`msg-${idx}`}>{message.username}: {message.body}</li>
+      ));
+    } else {
+      return undefined;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -25,6 +35,8 @@ class MessagesPlaceholder extends React.Component {
         <p>Channels: {this.props.channels.length}</p>
         <p>Current channel: {this.props.currentChannel.name}</p>
         <p>Channel members: {this.props.currentChannel.members.length}</p>
+        <br/><br/>
+        <ul>{ this.channelMessages() }</ul>
       </div>
     );
   }

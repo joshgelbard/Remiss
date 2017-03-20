@@ -20,6 +20,8 @@ class Channel < ApplicationRecord
   through: :channel_memberships,
   source: :user
 
+  has_many :messages
+
   def creator
     User.find_by(id: self.creator_id)
   end
