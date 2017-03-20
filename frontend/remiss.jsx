@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store.js';
 import { logout } from './actions/session_actions';
-import { createChannel, switchToChannel } from './actions/channel_actions';
+import { createChannel, receiveChannel } from './actions/channel_actions';
 import Root from './components/root.jsx';
 
-const windowFunctions = { logout, createChannel, switchToChannel };
+const windowFunctions = { logout, createChannel, receiveChannel };
 
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
