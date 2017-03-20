@@ -15,5 +15,6 @@ ChannelMembership.destroy_all
 end
 
 josh = User.create!(username: 'josh', password: 'password')
-general = Channel.create!(name: 'general', channel_type: 'CHANNEL')
+general = Channel.create!(name: 'general', channel_type: 'CHANNEL', creator_id: josh.id)
+random = Channel.create!(name: 'general', channel_type: 'CHANNEL', creator_id: josh.id)
 ChannelMembership.create!(user_id: josh.id, channel_id: general.id)

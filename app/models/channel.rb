@@ -15,9 +15,14 @@ class Channel < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :channel_type, inclusion: { in: CHANNEL_TYPES }
   has_many :channel_memberships, dependent: :destroy
+
   has_many :members,
   through: :channel_memberships,
   source: :user
+
+  def creator
+    User.find_by(id: self.creator_id)
+  end
 
   def allow_user?(user)
     true
