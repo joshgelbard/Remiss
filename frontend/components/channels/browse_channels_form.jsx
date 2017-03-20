@@ -37,11 +37,20 @@ class BrowseChannelsForm extends React.Component {
     this.props.fetchChannels();
   }
 
+  headerRow(){
+    return (
+      <div className='browse-channels-header'>
+        <span><h1>Browse all {this.props.channels.length} channels</h1></span>
+        <i className="fa fa-times" onClick={this.redirect.bind(this)}></i>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className='browse-channels-form-container'>
         <form className='browse-channels-form'>
-          <h1>Browse all {this.props.channels.length} channels</h1>
+          { this.headerRow.bind(this)() }
           { this.channelsList.bind(this)() }
         </form>
       </div>

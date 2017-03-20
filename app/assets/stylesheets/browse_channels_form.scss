@@ -42,3 +42,18 @@
     background-color: #EDF7FD;
   }
 }
+
+.browse-channels-header {
+  display: flex;
+  justify-content: space-between;
+
+  .fa-times {
+    font-size: 38px;
+    color: #909090;
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
+
+   }
+}
