@@ -1,6 +1,6 @@
 import React from 'react';
 import ChannelMessages from '../channel_messages/channel_messages';
-import Compose from '../compose/compose';
+import ComposeContainer from '../compose/compose_container';
 
 class MessageDisplay extends React.Component {
   render(){
@@ -8,7 +8,7 @@ class MessageDisplay extends React.Component {
     return (
       <div className='message-display'>
         <ChannelMessages channel={channel}/>
-        <Compose />
+        <ComposeContainer />
       </div>
     );
   }
