@@ -44,7 +44,7 @@ const Root = ({store}) => {
         <Route path='/' component={ App }>
           <IndexRoute onEnter={ _indexRedirect } />
           <Route path= '/messages' component={ MessagesPlaceholder } onEnter={ _redirectUnlessLoggedIn } />
-          <Route path= 'home-screen/:channelId' component={ HomeScreenContainer } />
+          <Route path='home-screen/:channelId' component={ HomeScreenContainer } />
           <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
           <Route path='/logout' onEnter={ _logout } />

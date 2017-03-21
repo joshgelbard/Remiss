@@ -2,9 +2,10 @@ import React from 'react';
 
 class ChatHeader extends React.Component {
   render(){
+    const { channel } = this.props;
     return (
       <div className='chat-header'>
-        <p>Summary of the channel</p>
+        <h2>#{channel.name}</h2>
       </div>
     );
   }

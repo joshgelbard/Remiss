@@ -1,13 +1,15 @@
 import { connect } from 'react-redux';
 import HomeScreen from './home_screen';
-import { fetchChannels } from '../../actions/channel_actions';
+import { fetchChannels, fetchChannel } from '../../actions/channel_actions';
 
 const mapStateToProps = (state) => ({
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  currentChannel: state.currentChannel
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  fetchChannels: () => dispatch(fetchChannels())
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  fetchChannels: () => dispatch(fetchChannels()),
+  fetchChannel: (channelId) => dispatch(fetchChannel(channelId))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

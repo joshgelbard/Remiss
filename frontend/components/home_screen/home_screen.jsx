@@ -6,14 +6,21 @@ class HomeScreen extends React.Component {
 
   componentDidMount() {
     this.props.fetchChannels();
+    this.props.fetchChannel(this.props.params.channelId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (this.props.params.channelId !== newProps.params.channelId) {
+      this.props.fetchChannel(newProps.params.channelId);
+    }
   }
 
   render() {
-    const { currentUser, channels } = this.props;
+    const { currentUser, currentChannel } = this.props;
     return (
       <div className='home-screen'>
-        <LeftNav user={currentUser} channels={channels}/>
-        <CurrentChat />
+        <LeftNav user={currentUser} />
+        <CurrentChat channel={currentChannel}/>
       </div>
     );
   }
