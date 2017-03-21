@@ -4,9 +4,10 @@ import Compose from '../compose/compose';
 
 class MessageDisplay extends React.Component {
   render(){
+    const { channel } = this.props;
     return (
       <div className='message-display'>
-        <ChannelMessages />
+        <ChannelMessages channel={channel}/>
         <Compose />
       </div>
     );

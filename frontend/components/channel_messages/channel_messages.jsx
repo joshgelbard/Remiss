@@ -1,15 +1,22 @@
 import React from 'react';
+import ChannelMessage from './channel_message';
 
 class ChannelMessages extends React.Component {
+
+  messagesList() {
+    if (this.props.channel.messages) {
+      return this.props.channel.messages.map( (m, idx) => (
+        <ChannelMessage message={m} idx={idx} key={`msg-${idx}`}/>
+      ));
+    } else {
+      return undefined;
+    }
+  }
   render(){
     return (
       <div className='channel-messages'>
         <ul>
-          <li>A</li>
-          <li>Whole</li>
-          <li>Bunch</li>
-          <li>Of</li>
-          <li>Messages</li>
+          {this.messagesList()}
         </ul>
       </div>
     );

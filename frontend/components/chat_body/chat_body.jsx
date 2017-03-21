@@ -4,10 +4,11 @@ import ChannelDetail from '../channel_detail/channel_detail';
 
 class ChatBody extends React.Component {
   render(){
+    const { channel } = this.props;
     return (
       <div className='chat-body'>
-        <MessageDisplay />
-        <ChannelDetail />
+        <MessageDisplay channel={channel}/>
+        <ChannelDetail channel={channel}/>
       </div>
     );
   }
