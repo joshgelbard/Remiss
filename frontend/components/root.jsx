@@ -6,6 +6,7 @@ import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import MessagesPlaceholder from './messages_placeholder';
 import NewChannelFormContainer from './channels/new_channel_form_container';
+import HomeScreen from './home_screen/home_screen';
 import BrowseChannelsFormContainer from './channels/browse_channels_form_container';
 
 const Root = ({store}) => {
@@ -43,6 +44,7 @@ const Root = ({store}) => {
         <Route path='/' component={ App }>
           <IndexRoute onEnter={ _indexRedirect } />
           <Route path= '/messages' component={ MessagesPlaceholder } onEnter={ _redirectUnlessLoggedIn } />
+          <Route path= 'home-screen' component={ HomeScreen } />
           <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
           <Route path='/logout' onEnter={ _logout } />
