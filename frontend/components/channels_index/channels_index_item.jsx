@@ -3,7 +3,7 @@ import React from 'react';
 
 const ChannelsIndexItem = (props) => {
   const {key, channel, router} = props;
-  const changeUrl = () => router.push(`home-screen/${channel.id}`);
+  const changeUrl = () => router.push(`home-screen/${channel.name}`);
   return (
     <li className='channels-index-item' onClick={changeUrl} key={key}>
       # {channel.name}

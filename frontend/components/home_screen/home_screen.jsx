@@ -6,12 +6,12 @@ class HomeScreen extends React.Component {
 
   componentDidMount() {
     this.props.fetchChannels();
-    this.props.fetchChannel(this.props.params.channelId);
+    this.props.fetchChannel(this.props.params.channelName);
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.params.channelId !== newProps.params.channelId) {
-      this.props.fetchChannel(newProps.params.channelId);
+    if (this.props.params.channelName !== newProps.params.channelName) {
+      this.props.fetchChannel(newProps.params.channelName);
     }
   }
 

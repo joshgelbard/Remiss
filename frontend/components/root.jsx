@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { logout } from '../actions/session_actions';
+import { channelsList } from '../reducers/selectors';
 import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import MessagesPlaceholder from './messages_placeholder';
@@ -21,17 +22,21 @@ const Root = ({store}) => {
   const _redirectIfLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
-      replace('/messages');
+      replace('/home-screen');
     }
   };
 
   const _indexRedirect = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (currentUser) {
-      replace('/messages');
+      replace('/home-screen');
     } else {
       replace('/signin');
     }
+  };
+
+  const _homeScreenRedirect = (nextState, replace) => {
+    replace(`home-screen/general`);
   };
 
   const _logout = () => {
@@ -44,7 +49,8 @@ const Root = ({store}) => {
         <Route path='/' component={ App }>
           <IndexRoute onEnter={ _indexRedirect } />
           <Route path= '/messages' component={ MessagesPlaceholder } onEnter={ _redirectUnlessLoggedIn } />
-          <Route path='home-screen/:channelId' component={ HomeScreenContainer } />
+          <Route path='home-screen/:channelName' component={ HomeScreenContainer } onEnter={_redirectUnlessLoggedIn}/>
+          <Route path='home-screen' onEnter={_homeScreenRedirect} />
           <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
           <Route path='/logout' onEnter={ _logout } />

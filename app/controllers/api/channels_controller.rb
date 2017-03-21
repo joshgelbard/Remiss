@@ -10,7 +10,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def update
-    @channel = Channel.find(params[:id])
+    @channel = Channel.find_by_name(params[:id])
     if @channel.update_attributes(channel_params)
       render json: @channel
     else
@@ -24,12 +24,12 @@ class Api::ChannelsController < ApplicationController
   end
 
   def show
-    @channel = Channel.find(params[:id])
+    @channel = Channel.find_by_name(params[:id])
     render :show
   end
 
   def join
-    @channel = Channel.find(params[:id])
+    @channel = Channel.find_by_name(params[:id])
     if @channel.allow_user?(current_user)
       ChannelMembership.create(user_id: current_user.id, channel_id: @channel.id)
       render :show

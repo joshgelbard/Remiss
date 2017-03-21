@@ -31,14 +31,14 @@ export const fetchChannels = () => dispatch => {
     .fail( errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
-export const joinChannel = channel => dispatch => {
-  return ChannelAPI.joinChannel(channel)
+export const joinChannel = channelId => dispatch => {
+  return ChannelAPI.joinChannel(channelId)
     .then( res => dispatch(receiveChannel(res)))
     .fail( errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 
-export const fetchChannel = channel => dispatch => {
-  return ChannelAPI.fetchChannel(channel)
+export const fetchChannel = channelId => dispatch => {
+  return ChannelAPI.fetchChannel(channelId)
     .then( res => dispatch(receiveChannel(res)))
     .fail( errors => dispatch(receiveErrors(errors.responseJSON)));
 };
