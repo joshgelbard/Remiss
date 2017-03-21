@@ -13,7 +13,7 @@ class BrowseChannelsForm extends React.Component {
 
   handleClick(e, channelId) {
     this.props.joinChannel(channelId)
-      .then(() => this.redirect());
+      .then(() => this.props.router.push(`/home-screen/${channelId}`));
   }
 
   channelsList(){
