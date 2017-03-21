@@ -5,7 +5,6 @@ class BrowseChannelsForm extends React.Component {
 
   constructor(props){
     super(props);
-    console.log('browse channels form props=', props);
   }
 
   redirect() {

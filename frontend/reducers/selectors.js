@@ -8,3 +8,10 @@ export const channelsAvailableToJoin = ({ channels, session }) => {
     return (!memberIds.includes(session.currentUser.id));
   });
 };
+
+export const joinedChannels = (state) => {
+  return channelsList(state).filter( channel => {
+    const memberIds = channel.members.map( m => m.id );
+    return (memberIds.includes(state.session.currentUser.id));
+  });
+};

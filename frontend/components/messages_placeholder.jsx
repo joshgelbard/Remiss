@@ -7,7 +7,6 @@ import { channelsList } from '../reducers/selectors.js';
 class MessagesPlaceholder extends React.Component {
   constructor(props){
     super(props);
-    console.log('messages placeholder props=', props);
   }
 
   componentWillMount() {
