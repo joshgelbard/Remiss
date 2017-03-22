@@ -1,4 +1,5 @@
 import * as SessionAPI from '../util/session_api_util';
+import { hashHistory } from 'react-router';
 
 export const RECEIVE_LOGIN ='RECEIVE_LOGIN';
 export const RECEIVE_LOGOUT = 'RECEIVE_LOGOUT';

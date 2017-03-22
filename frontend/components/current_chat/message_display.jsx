@@ -1,6 +1,6 @@
 import React from 'react';
-import ChannelMessages from '../channel_messages/channel_messages';
-import ComposeContainer from '../compose/compose_container';
+import ChannelMessages from './channel_messages';
+import ComposeContainer from './compose/compose_container';
 
 class MessageDisplay extends React.Component {
   render(){

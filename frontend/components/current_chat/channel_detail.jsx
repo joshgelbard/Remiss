@@ -24,9 +24,11 @@ const MembersList = ({ channel }) => {
     </li>
   ));
   return (
-    <ul>
-      { members }
-    </ul>
+    <label> Channel members
+      <ul className='members-list'>
+        { members }
+      </ul>
+    </label>
   );
 };
 

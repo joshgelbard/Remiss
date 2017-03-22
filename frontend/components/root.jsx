@@ -6,9 +6,9 @@ import { channelsList } from '../reducers/selectors';
 import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import MessagesPlaceholder from './messages_placeholder';
-import NewChannelFormContainer from './channels/new_channel_form_container';
+import NewChannelFormContainer from './channel_forms/new_channel_form_container';
 import HomeScreenContainer from './home_screen/home_screen_container';
-import BrowseChannelsFormContainer from './channels/browse_channels_form_container';
+import BrowseChannelsFormContainer from './channel_forms/browse_channels_form_container';
 
 const Root = ({store}) => {
 

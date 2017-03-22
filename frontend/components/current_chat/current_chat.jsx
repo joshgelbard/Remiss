@@ -1,6 +1,19 @@
 import React from 'react';
-import ChatHeader from '../chat_header/chat_header';
-import ChatBody from '../chat_body/chat_body';
+import MessageDisplay from './message_display';
+import ChannelDetail from './channel_detail';
+
+const ChatHeader = ({ channel }) => (
+  <div className='chat-header'>
+    <h2>#{channel.name}</h2>
+  </div>
+);
+
+const ChatBody = ({ channel }) => (
+  <div className='chat-body'>
+    <MessageDisplay channel={channel}/>
+    <ChannelDetail channel={channel}/>
+  </div>
+);
 
 class CurrentChat extends React.Component {
   render(){

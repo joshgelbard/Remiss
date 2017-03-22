@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { joinedChannels, channelsList } from '../../reducers/selectors.js';
-import { fetchChannels } from '../../actions/channel_actions';
+import { joinedChannels, channelsList } from '../../../reducers/selectors.js';
+import { fetchChannels } from '../../../actions/channel_actions';
 import ChannelsIndex from './channels_index';
 
 const mapStateToProps = (state, ownProps) => ({

@@ -8,7 +8,7 @@ class BrowseChannelsForm extends React.Component {
   }
 
   redirect() {
-    this.props.router.push('/messages');
+    this.props.router.push('/home-screen');
   }
 
   handleClick(e, channelId) {
@@ -21,7 +21,7 @@ class BrowseChannelsForm extends React.Component {
       <ChannelIndexItem
         channel={ channel }
         key={`chan-${idx}`}
-        onClick={e => this.handleClick(e, channel.id)} />
+        onClick={e => this.handleClick(e, channel.name)} />
     ));
     return (
       <label>Channels you can join

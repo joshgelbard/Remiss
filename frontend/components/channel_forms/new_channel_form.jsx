@@ -18,7 +18,7 @@ class NewChannelForm extends React.Component {
   }
 
   redirect() {
-    this.props.router.push('/messages');
+    this.props.router.push('/home-screen');
   }
 
   render() {

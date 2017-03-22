@@ -16,6 +16,7 @@ class User < ApplicationRecord
   validates :username, :session_token, uniqueness: true
 
   before_validation :ensure_session_token
+  after_save :join_default_channels
 
   attr_reader :password
 
@@ -45,4 +46,20 @@ class User < ApplicationRecord
   def ensure_session_token
     self.session_token ||= SecureRandom.urlsafe_base64
   end
+
+  def join_channel(channel)
+    if channel
+      ChannelMembership.create(channel_id: channel.id, user_id: self.id)
+    end
+  end
+
+  private
+
+  def join_default_channels
+    general = Channel.find_by_name('general')
+    random = Channel.find_by_name('random')
+    join_channel(general)
+    join_channel(random)
+  end
+
 end
