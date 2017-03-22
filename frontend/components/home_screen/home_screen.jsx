@@ -18,7 +18,7 @@ class HomeScreen extends React.Component {
   render() {
     const { currentUser, currentChannel, logout } = this.props;
     return (
-      <div className='home-screen'>
+      <div className='messages'>
         <Sidebar user={currentUser} logout={logout} />
         <CurrentChat channel={currentChannel}/>
       </div>

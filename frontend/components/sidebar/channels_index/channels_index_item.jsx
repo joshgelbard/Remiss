@@ -3,7 +3,7 @@ import React from 'react';
 
 const ChannelsIndexItem = (props) => {
   const {key, channel, router, selected} = props;
-  const changeUrl = () => router.push(`home-screen/${channel.name}`);
+  const changeUrl = () => router.push(`messages/${channel.name}`);
   let className = 'channels-index-item';
   if (selected) {
     className += '-selected';
