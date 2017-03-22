@@ -3,9 +3,15 @@ import React from 'react';
 const ChannelMessage = (props) => {
   const {message} = props;
   return (
-    <li className='channel-message'>
-      {message.username} says: {message.body}
-    </li>
+    <div className='channel-message'>
+      <div className='message-header'>
+        <span className='username'>{message.username}</span>
+        <span className='timestamp'>{message.created_at}</span>
+      </div>
+      <div className='message-body'>
+        {message.body}
+      </div>
+    </div>
   );
 };
 

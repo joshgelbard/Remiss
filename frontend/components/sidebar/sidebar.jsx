@@ -3,10 +3,10 @@ import ChannelsIndexContainer
   from './channels_index/channels_index_container';
 
 
-class LeftNav extends React.Component {
+class Sidebar extends React.Component {
   render(){
     return (
-      <div className='left-nav'>
+      <div className='sidebar'>
         <div className='user-account-button' onClick={this.props.logout}>
           <span>{this.props.user.username}</span>
           <i className="fa fa-sign-out"></i>
@@ -18,4 +18,4 @@ class LeftNav extends React.Component {
   }
 }
 
-export default LeftNav;
+export default Sidebar;

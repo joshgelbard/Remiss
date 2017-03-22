@@ -2,21 +2,15 @@ import React from 'react';
 import { withRouter } from 'react-router';
 import ChannelsIndexItem from './channels_index_item';
 
-const ChannelsIndexHeader = ({numChannels, browseChannels, newChannel}) => (
-  <div className='channels-index-header'>
-    <span onClick={browseChannels}>CHANNELS</span>
-    <span onClick={browseChannels}>({numChannels})</span>
-    <i className="fa fa-plus-circle" onClick={newChannel}></i>
-  </div>
-);
-
 class ChannelsIndex extends React.Component {
 
   channelButtons() {
     if (this.props.userChannels) {
-      return this.props.userChannels.map( (c, idx) => (
-        <ChannelsIndexItem key={`ch-${idx}`} channel={c} />
-      ));
+      let selected;
+      return this.props.userChannels.map( (c, idx) => {
+        selected = c.id === this.props.currentChannel.id;
+        return <ChannelsIndexItem key={`ch-${idx}`} channel={c} selected={selected} />
+      });
     } else {
       return undefined;
     }
@@ -31,8 +25,14 @@ class ChannelsIndex extends React.Component {
     const newChannel = () => this.props.router.push('/new-channel');
     return (
       <div>
-        <ChannelsIndexHeader numChannels={this.props.numChannels} browseChannels={browseChannels} newChannel={newChannel}/>
-        <ul>
+        <div className='channels-index-header'>
+          <span className='header-browse-channels'>
+            <span onClick={browseChannels}>CHANNELS </span>
+            <span onClick={browseChannels}>({this.props.numChannels})</span>
+          </span>
+          <i className="fa fa-plus-circle" onClick={newChannel}></i>
+        </div>
+        <ul className='channels-index'>
           {this.channelButtons()}
         </ul>
       </div>

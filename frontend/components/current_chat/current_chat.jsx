@@ -1,6 +1,5 @@
 import React from 'react';
 import MessageDisplay from './message_display';
-import ChannelDetail from './channel_detail';
 
 const ChatHeader = ({ channel }) => (
   <div className='chat-header'>
@@ -11,7 +10,6 @@ const ChatHeader = ({ channel }) => (
 const ChatBody = ({ channel }) => (
   <div className='chat-body'>
     <MessageDisplay channel={channel}/>
-    <ChannelDetail channel={channel}/>
   </div>
 );
 

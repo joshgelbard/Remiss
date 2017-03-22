@@ -5,7 +5,7 @@
   background-color: red;
 }
 
-.left-nav {
+.sidebar {
   min-width: 220px;
   width: 220px;
   height: 100%;
@@ -31,14 +31,10 @@
   display: flex;
 }
 
-.channel-detail {
-  width: 32%;
-  background-color: #F7F7F7;
-}
-
 .message-display {
-  width: 68%;
+  width: 100%;
   background-color: white;
+  padding: 20px;
 }
 
 .channel-messages {
@@ -49,6 +45,5 @@
 
 .compose {
   width: 100%;
-  height: 64px;
-  background-color: #edfff8;
+  height: 62px;
 }

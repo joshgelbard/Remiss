@@ -1,0 +1,75 @@
+.sidebar {
+  color: #A79BA9;
+}
+
+.user-account-button {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 62px;
+  width: 100%;
+  color: white;
+
+
+  &:hover {
+    background-color: #3E313C;
+    cursor: pointer;
+  }
+}
+
+
+.channels-index-header {
+  padding-left: 15px;
+  padding-top: 8px;
+  padding-bottom: 3px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+
+  span:hover {
+    color: white;
+    cursor: pointer;
+  }
+
+  .header-browse-channels {
+    span:nth-of-type(1) {
+      font-weight: 700;
+    }
+  }
+}
+
+.channels-index-item {
+
+  padding-top: 6px;
+  padding-bottom: 6px;
+
+  p {
+    padding-left: 20px;
+  }
+
+  &:hover {
+    background-color: #3E313C;
+    cursor: pointer;
+  }
+
+}
+
+.channels-index-item-selected {
+  @extend .channels-index-item;
+  background-color: #4C9689;
+  color: white;
+
+  &:hover {
+    background-color: #4C9689;
+    cursor: default;
+  }
+}
+
+.fa-plus-circle {
+  padding-right: 10px;
+
+  &:hover {
+    color: white;
+    cursor: pointer;
+  }
+}

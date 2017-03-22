@@ -5,7 +5,8 @@ import ChannelsIndex from './channels_index';
 
 const mapStateToProps = (state, ownProps) => ({
   userChannels: joinedChannels(state),
-  numChannels: channelsList(state).length
+  numChannels: channelsList(state).length,
+  currentChannel: state.currentChannel
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
