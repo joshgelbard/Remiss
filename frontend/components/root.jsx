@@ -39,10 +39,6 @@ const Root = ({store}) => {
     replace(`messages/general`);
   };
 
-  const _logout = () => {
-    store.dispatch(logout());
-  };
-
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
@@ -52,7 +48,6 @@ const Root = ({store}) => {
           <Route path='/messages' onEnter={_messagesRedirect} />
           <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
-          <Route path='/logout' onEnter={ _logout } />
           <Route path='/new-channel' component={ NewChannelFormContainer } onEnter={ _redirectUnlessLoggedIn } />
           <Route path='/browse-channels' component={ BrowseChannelsFormContainer } onEnter={ _redirectUnlessLoggedIn } />
         </Route>
