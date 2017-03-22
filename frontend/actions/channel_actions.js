@@ -21,7 +21,7 @@ export const receiveErrors = errors => ({
 
 export const createChannel = channel => dispatch => {
   return ChannelAPI.createChannel(channel)
-    .then( res => dispatch(receiveChannel(res)))
+    .then( res => dispatch(joinChannel(res.name)))
     .fail( errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 

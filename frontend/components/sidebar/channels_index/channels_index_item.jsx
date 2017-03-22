@@ -2,7 +2,6 @@ import { withRouter } from 'react-router';
 import React from 'react';
 
 const ChannelsIndexItem = (props) => {
-  console.log(props);
   const {key, channel, router, selected} = props;
   const changeUrl = () => router.push(`home-screen/${channel.name}`);
   let className = 'channels-index-item';
