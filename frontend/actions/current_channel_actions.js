@@ -9,6 +9,5 @@ export const receiveMessage = message => ({
 
 export const postMessage = message => dispatch => {
   return MessageAPI.postMessage(message)
-    .then(res => dispatch(receiveMessage(res)))
-    .fail(errors => console.log('postMessage errors!'));
+    .then(res => dispatch(receiveMessage(res)));
 };
