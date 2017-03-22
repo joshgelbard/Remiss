@@ -21,9 +21,24 @@ class NewChannelForm extends React.Component {
     this.props.router.push('/home-screen');
   }
 
+  errorsList() {
+    if (this.props.errors.length > 0) {
+      return (
+        <div className='card errors-card'>
+          <ul>
+            { this.props.errors.map( (err, idx) => <li key={`err-${idx}`}>{err}</li> )}
+          </ul>
+        </div>
+      );
+    } else {
+      return undefined;
+    }
+  }
+
   render() {
     return (
       <div className='new-channel-form-container'>
+        { this.errorsList() }
         <form className='new-channel-form' onSubmit={this.handleSubmit.bind(this)}>
           <h1>Create a channel</h1>
           <p>Channels are where your team communicates. They work best when organized around a topic — #leads, for example.</p>

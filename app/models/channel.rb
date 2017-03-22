@@ -12,8 +12,11 @@
 
 class Channel < ApplicationRecord
   CHANNEL_TYPES = ['CHANNEL', 'DM'].freeze
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
   validates :channel_type, inclusion: { in: CHANNEL_TYPES }
+
+  validate :name_validator
+
   has_many :channel_memberships, dependent: :destroy
 
   has_many :members,
@@ -28,5 +31,13 @@ class Channel < ApplicationRecord
 
   def allow_user?(user)
     true
+  end
+
+  private
+
+  def name_validator
+    unless /^[a-zA-Z0-9_-]*$/ =~ self.name
+      errors.add(:name, 'must consist only of numbers, letters, - and _')
+    end
   end
 end
