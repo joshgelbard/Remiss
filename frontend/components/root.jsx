@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import { logout } from '../actions/session_actions';
 import { channelsList } from '../reducers/selectors';
+import { receiveMessage } from '../actions/current_channel_actions';
 import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
 import MessagesPlaceholder from './messages_placeholder';
@@ -40,12 +41,34 @@ const Root = ({store}) => {
     replace(`messages/general`);
   };
 
+  const setSocket = (channelName) => {
+    if (window.App.channel) {
+      window.App.cable.subscriptions.remove(window.App.channel);
+    }
+    window.App.channel = window.App.cable.subscriptions.create(
+      { channel: 'MessagesChannel', channel_name: channelName },
+      { connected: () => {},
+        disconnected: () => {},
+        received: (data) => { store.dispatch(receiveMessage(data.message)); }
+      }
+    );
+  };
+
+  const _enterChannel = (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+    if (!currentUser) {
+      replace('/signin');
+    } else {
+      setSocket(nextState.params.channelName);
+    }
+  };
+
   return (
     <Provider store={ store }>
       <Router history={ hashHistory }>
         <Route path='/' component={ App }>
           <IndexRoute onEnter={ _indexRedirect } />
-          <Route path='/messages/:channelName' component={ HomeScreenContainer } onEnter={_redirectUnlessLoggedIn}/>
+          <Route path='/messages/:channelName' component={ HomeScreenContainer } onEnter={_enterChannel}/>
           <Route path='/messages' onEnter={_messagesRedirect} />
           <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />

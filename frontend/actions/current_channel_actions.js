@@ -8,6 +8,5 @@ export const receiveMessage = message => ({
 });
 
 export const postMessage = message => dispatch => {
-  return MessageAPI.postMessage(message)
-    .then(res => dispatch(receiveMessage(res)));
+  return MessageAPI.postMessage(message);
 };
