@@ -4,7 +4,8 @@ import NewChannelForm from './new_channel_form';
 
 const mapStateToProps = (state, ownProps) => ({
   errors: state.channels.errors,
-  currentUser: state.session.currentUser
+  currentUser: state.session.currentUser,
+  currentChannelName: state.currentChannel.name
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

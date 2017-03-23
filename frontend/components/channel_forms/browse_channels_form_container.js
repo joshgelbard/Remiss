@@ -3,9 +3,10 @@ import { joinChannel, fetchChannels, fetchChannel } from '../../actions/channel_
 import { channelsList } from '../../reducers/selectors.js';
 import BrowseChannelsForm from './browse_channels_form';
 
-const mapStateToProps = (state, ownProps) => {
-  return {channels: channelsList(state) };
-};
+const mapStateToProps = (state, ownProps) => ({
+  channels: channelsList(state),
+  currentChannelName: state.currentChannel.name
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   joinChannel: channelId => dispatch(joinChannel(channelId)),

@@ -6,7 +6,8 @@ import ConversationChooser from './conversation_chooser';
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
   allUsers: usersList(state),
-  userDMs: userDMsList(state)
+  userDMs: userDMsList(state),
+  currentChannelName: state.currentChannel.name
 });
 
 const mapDispatchToProps = (dispatch) => ({

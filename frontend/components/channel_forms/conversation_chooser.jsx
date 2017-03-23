@@ -3,7 +3,7 @@ import React from 'react';
 class ConversationChooser extends React.Component {
 
   redirect() {
-    this.props.router.push('/messages');
+    this.props.router.push(`/messages/${this.props.currentChannelName}`);
   }
 
   componentDidMount(){
@@ -12,7 +12,6 @@ class ConversationChooser extends React.Component {
 
   handleClick(e, actionType, otherUser) {
     const sortedNames = [this.props.currentUser.username, otherUser.username].sort();
-    console.log(sortedNames);
     const channelName = sortedNames.join('-');
     if (actionType === 'open') {
       this.props.router.push(`/messages/${channelName}`);
