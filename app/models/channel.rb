@@ -29,9 +29,8 @@ class Channel < ApplicationRecord
 
   has_many :messages
 
-  def creator
-    User.find_by(id: self.creator_id)
-  end
+  belongs_to :creator,
+  class_name: :User
 
   def allow_user?(user)
     true

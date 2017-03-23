@@ -13,7 +13,8 @@
 class Message < ApplicationRecord
   validates :body, :user_id, :channel_id, presence: true
 
-  def author
-    User.find(self.user_id)
-  end
+  belongs_to :author,
+  foreign_key: :user_id,
+  class_name: :User
+
 end
