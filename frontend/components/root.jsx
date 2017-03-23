@@ -9,6 +9,7 @@ import MessagesPlaceholder from './messages_placeholder';
 import NewChannelFormContainer from './channel_forms/new_channel_form_container';
 import HomeScreenContainer from './home_screen/home_screen_container';
 import BrowseChannelsFormContainer from './channel_forms/browse_channels_form_container';
+import ConversationChooserContainer from './channel_forms/conversation_chooser_container';
 
 const Root = ({store}) => {
 
@@ -50,6 +51,7 @@ const Root = ({store}) => {
           <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
           <Route path='/new-channel' component={ NewChannelFormContainer } onEnter={ _redirectUnlessLoggedIn } />
           <Route path='/browse-channels' component={ BrowseChannelsFormContainer } onEnter={ _redirectUnlessLoggedIn } />
+          <Route path='/conversations' component={ ConversationChooserContainer } onEnter={ _redirectUnlessLoggedIn} />
         </Route>
       </Router>
     </Provider>

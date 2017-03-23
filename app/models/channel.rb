@@ -8,6 +8,8 @@
 #  purpose      :text
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  creator_id   :integer          not null
+#  invitee_id   :integer
 #
 
 class Channel < ApplicationRecord
@@ -16,6 +18,8 @@ class Channel < ApplicationRecord
   validates :channel_type, inclusion: { in: CHANNEL_TYPES }
 
   validate :name_validator
+
+  after_save :invite_participants
 
   has_many :channel_memberships, dependent: :destroy
 
@@ -35,9 +39,17 @@ class Channel < ApplicationRecord
 
   private
 
+  def invite_participants
+    ChannelMembership.create!(channel_id: self.id, user_id: self.creator_id)
+    if self.channel_type == 'DM'
+      ChannelMembership.create!(channel_id: self.id, user_id: self.invitee_id)
+    end
+  end
+
   def name_validator
     unless /^[a-zA-Z0-9_-]*$/ =~ self.name
       errors.add(:name, 'must consist only of numbers, letters, - and _')
     end
   end
+
 end

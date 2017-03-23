@@ -4,7 +4,8 @@ class NewChannelForm extends React.Component {
 
   constructor(props){
     super(props);
-    this.state = {name: '', purpose: '', channel_type: 'CHANNEL'};
+    this.state = {name: '', purpose: '',
+      channel_type: 'CHANNEL', creator_id: props.currentUser.id};
   }
 
   update(attribute) {

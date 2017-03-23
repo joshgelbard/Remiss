@@ -3,7 +3,8 @@ import { createChannel } from '../../actions/channel_actions';
 import NewChannelForm from './new_channel_form';
 
 const mapStateToProps = (state, ownProps) => ({
-  errors: state.channels.errors
+  errors: state.channels.errors,
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

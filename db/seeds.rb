@@ -16,6 +16,9 @@ josh = User.create!(username: 'josh', password: 'password')
 general = Channel.create!(name: 'general', channel_type: 'CHANNEL', creator_id: josh.id)
 random = Channel.create!(name: 'random', channel_type: 'CHANNEL', creator_id: josh.id)
 jon = User.create!(username: 'jon', password: 'password')
+qadir = User.create!(username: 'qadir', password: 'password')
+
+jqdm = Channel.create!(name: 'josh-qadir', channel_type: 'DM', creator_id: josh.id, invitee_id: qadir.id)
 
 99.times do |i|
   User.create!(username: "guest_#{i + 1}", password: 'password')
