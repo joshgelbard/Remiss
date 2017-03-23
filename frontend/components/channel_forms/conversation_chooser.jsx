@@ -6,9 +6,11 @@ const ConversationChooserItem = ({ existing, displayName, onClick }) => {
     nameStyling += '-existing';
   }
   return(
-    <li className='conversation-chooser-row' onClick={onClick}>
+    <li className='channel-form-row' onClick={onClick}>
+      <div>
         <span className={nameStyling}>{displayName}</span>
         {existing ? <span>(continue)</span> : undefined}
+      </div>
     </li>
   );
 };
@@ -52,6 +54,7 @@ class ConversationChooser extends React.Component {
     const unmessagedUsersList = Object.keys(unmessagedUsers).map( k => unmessagedUsers[k] );
     unmessagedUsersList.forEach( (user, idx) => {
       if (user.username.slice(0, 6) !== 'guest_' && user.username !== currentUser.username) {
+      // if (user.username !== currentUser.username) {
         listItems.push(
           <ConversationChooserItem key={`newdm-${idx}`}
             onClick={e => this.handleClick(e, 'create', user)}
@@ -60,12 +63,12 @@ class ConversationChooser extends React.Component {
         );
       }
     });
-    return <ul>{ listItems }</ul>;
+    return <ul className='channel-form-body'>{ listItems }</ul>;
   }
 
   headerRow(){
     return (
-      <div className='conversation-chooser-header'>
+      <div className='channel-form-header'>
         <span><h1>Start or continue a conversation</h1></span>
         <i className="fa fa-times" onClick={this.redirect.bind(this)}></i>
       </div>
@@ -74,8 +77,8 @@ class ConversationChooser extends React.Component {
 
   render() {
     return (
-      <div className='conversation-chooser-container'>
-        <form className='conversation-chooser-form'>
+      <div className='channel-form-container'>
+        <form className='channel-form'>
           {this.headerRow()}
           {this.DMsList()}
         </form>

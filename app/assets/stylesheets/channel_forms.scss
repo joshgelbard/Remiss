@@ -1,0 +1,79 @@
+.channel-form-container {
+  height: 100%;
+  width: 100%;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+}
+
+.channel-form {
+  width: 640px;
+  height: 100%;
+}
+
+.channel-form-body {
+  height: calc(100% - 109px);
+  overflow-y: auto;
+  width: 100%
+}
+
+.channel-form-header {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  height: 109px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  .fa-times {
+    font-size: 38px;
+    color: #909090;
+
+    &:hover {
+      color: black;
+      cursor: pointer;
+    }
+  }
+
+  h1 {
+    font-weight: 900
+  }
+
+}
+
+.channel-form-row {
+  width: 620px;
+  padding: 10px;
+  border-bottom: 1px solid #e8e8e8;
+
+  &:hover {
+    background-color: #EDF7FD;
+  }
+
+  .conversation-name {
+    font-size: 16px;
+  }
+
+  .conversation-name-existing {
+    font-size: 16px;
+    font-weight: 900;
+  }
+
+  .channel-name {
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  .creation-info {
+    font-size: 14px;
+  }
+
+  .purpose {
+    font-size: 14px;
+  }
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+}

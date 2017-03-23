@@ -2,7 +2,7 @@ import React from 'react';
 
 const ChannelBrowserItem = ({ channel, onClick }) => {
   return(
-    <li className='browse-channels-row' onClick={onClick}>
+    <li className='channel-form-row' onClick={onClick}>
       <div><span className='channel-name'># {channel.name}</span></div>
       <div><span className='creation-info'>Created by {channel.creator} on {channel.created_at}</span></div>
       <div><span className='purpose'>{channel.purpose}</span></div>
@@ -34,11 +34,11 @@ class BrowseChannelsForm extends React.Component {
         onClick={e => this.handleClick(e, channel.name)} />
     ));
     return (
-      <label>Channels you can join
+      <div className='channel-form-body'>
         <ul>
           { listItems }
         </ul>
-      </label>
+      </div>
     );
   }
 
@@ -48,7 +48,7 @@ class BrowseChannelsForm extends React.Component {
 
   headerRow(){
     return (
-      <div className='browse-channels-header'>
+      <div className='channel-form-header'>
         <span><h1>Browse all {this.props.channels.length} channels</h1></span>
         <i className="fa fa-times" onClick={this.redirect.bind(this)}></i>
       </div>
@@ -57,8 +57,8 @@ class BrowseChannelsForm extends React.Component {
 
   render() {
     return (
-      <div className='browse-channels-form-container'>
-        <form className='browse-channels-form'>
+      <div className='channel-form-container'>
+        <form className='channel-form'>
           { this.headerRow.bind(this)() }
           { this.channelsList.bind(this)() }
         </form>
