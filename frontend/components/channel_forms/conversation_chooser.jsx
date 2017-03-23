@@ -1,5 +1,18 @@
 import React from 'react';
 
+const ConversationChooserItem = ({ existing, displayName, onClick }) => {
+  let nameStyling = 'conversation-name';
+  if (existing) {
+    nameStyling += '-existing';
+  }
+  return(
+    <li className='conversation-chooser-row' onClick={onClick}>
+        <span className={nameStyling}>{displayName}</span>
+        {existing ? <span>(continue)</span> : undefined}
+    </li>
+  );
+};
+
 class ConversationChooser extends React.Component {
 
   redirect() {
@@ -30,19 +43,20 @@ class ConversationChooser extends React.Component {
       dm.members.forEach( m => { delete unmessagedUsers[m.id]; } );
       const otherUser = dm.members[0].id === currentUser.id ? dm.members[1] : dm.members[0];
       listItems.push(
-        <li key={`existdm-${idx}`}
-          onClick={e => this.handleClick(e, 'open', otherUser)}>
-          {otherUser.username}
-        </li>);
+        <ConversationChooserItem key={`existdm-${idx}`}
+          onClick={e => this.handleClick(e, 'open', otherUser)}
+          displayName={otherUser.username}
+          existing={true}/>
+      );
     });
     const unmessagedUsersList = Object.keys(unmessagedUsers).map( k => unmessagedUsers[k] );
     unmessagedUsersList.forEach( (user, idx) => {
-      if (user.username.slice(0, 6) !== 'guest_') {
+      if (user.username.slice(0, 6) !== 'guest_' && user.username !== currentUser.username) {
         listItems.push(
-          <li key={`newdm-${idx}`}
-            onClick={e => this.handleClick(e, 'create', user)}>
-            {user.username}
-          </li>
+          <ConversationChooserItem key={`newdm-${idx}`}
+            onClick={e => this.handleClick(e, 'create', user)}
+            displayName={user.username}
+            existing={false}/>
         );
       }
     });
@@ -63,8 +77,7 @@ class ConversationChooser extends React.Component {
       <div className='conversation-chooser-container'>
         <form className='conversation-chooser-form'>
           {this.headerRow()}
-          {this.DMsList()};
-
+          {this.DMsList()}
         </form>
       </div>
     );
