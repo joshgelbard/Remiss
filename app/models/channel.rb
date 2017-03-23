@@ -14,7 +14,7 @@
 
 class Channel < ApplicationRecord
   CHANNEL_TYPES = ['CHANNEL', 'DM'].freeze
-  validates :name, presence: true, uniqueness: true, length: { maximum: 20 }
+  validates :name, presence: true, uniqueness: true
   validates :channel_type, inclusion: { in: CHANNEL_TYPES }
 
   validate :name_validator
@@ -47,8 +47,9 @@ class Channel < ApplicationRecord
   end
 
   def name_validator
-    unless /^[a-zA-Z0-9_-]*$/ =~ self.name
-      errors.add(:name, 'must consist only of numbers, letters, - and _')
+    if self.channel_type == 'CHANNEL'
+      errors.add(:name, 'must be 20 characters or shorter') if self.name.length > 20
+      errors.add(:name, 'must consist only of numbers, letters, - and _') unless /^[a-zA-Z0-9_-]*$/ =~ self.name
     end
   end
 
