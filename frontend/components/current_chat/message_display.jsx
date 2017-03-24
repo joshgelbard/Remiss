@@ -6,7 +6,7 @@ class MessageDisplay extends React.Component {
   render(){
     const { channel } = this.props;
     return (
-      <div className='message-display'>
+      <div className='chat-body'>
         <ChannelMessages channel={channel}/>
         <ComposeContainer />
       </div>

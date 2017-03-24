@@ -27,12 +27,6 @@
 .chat-body {
   width: 100%;
   height: calc(100% - 62px);
-  background-color: #A0C5E8;
-  display: flex;
-}
-
-.message-display {
-  width: 100%;
   background-color: white;
   padding: 20px;
 }
@@ -40,6 +34,7 @@
 .channel-messages {
   width: 100%;
   height: calc(100% - 64px);
+  overflow-y: auto;
   background-color: white;
 }
 

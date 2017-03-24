@@ -7,19 +7,13 @@ const ChatHeader = ({ channel }) => (
   </div>
 );
 
-const ChatBody = ({ channel }) => (
-  <div className='chat-body'>
-    <MessageDisplay channel={channel}/>
-  </div>
-);
-
 class CurrentChat extends React.Component {
   render(){
     const { channel } = this.props;
     return (
       <div className='current-chat'>
         <ChatHeader channel={ channel }/>
-        <ChatBody channel={ channel }/>
+        <MessageDisplay channel={ channel }/>
       </div>
     );
   }

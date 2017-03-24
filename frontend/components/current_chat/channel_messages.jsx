@@ -17,6 +17,10 @@ const ChannelMessage = (props) => {
 
 class ChannelMessages extends React.Component {
 
+  componentWillUpdate() {
+    console.log(this);
+  }
+
   messagesList() {
     if (this.props.channel.messages) {
       return this.props.channel.messages.map( (m, idx) => (
@@ -28,11 +32,9 @@ class ChannelMessages extends React.Component {
   }
   render(){
     return (
-      <div className='channel-messages'>
-        <ul>
-          {this.messagesList()}
-        </ul>
-      </div>
+      <ul className='channel-messages'>
+        {this.messagesList()}
+      </ul>
     );
   }
 }
