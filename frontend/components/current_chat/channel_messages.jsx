@@ -1,4 +1,5 @@
 import React from 'react';
+import sortBy from 'lodash/sortBy';
 
 const ChannelMessage = (props) => {
   const {message} = props;
@@ -25,7 +26,8 @@ class ChannelMessages extends React.Component {
 
   messagesList() {
     if (this.props.channel.messages) {
-      return this.props.channel.messages.map( (m, idx) => (
+      const messages = sortBy(this.props.channel.messages, 'id');
+      return messages.map( (m, idx) => (
         <ChannelMessage message={m} key={`msg-${idx}`}/>
       ));
     } else {
