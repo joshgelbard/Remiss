@@ -1,11 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 User.destroy_all
 Channel.destroy_all
 ChannelMembership.destroy_all
@@ -36,14 +28,15 @@ c = general
   Message.create!(user_id: mangoes.id, channel_id: c.id, body: "couldn't think of a good username so i named myself after my favorite fruit")
   Message.create!(user_id: josh.id, channel_id: c.id, body: "That works!")
   Message.create!(user_id: catlover.id, channel_id: c.id, body: "There's no channel to talk about cats????")
-  Message.create!(user_id: josh.id, channel_id: c.id, body: "Make one! Anyone can make a chonnel")
-  Message.create!(user_id: josh.id, channel_id: c.id, body: "channel*")
+  Message.create!(user_id: josh.id, channel_id: c.id, body: "Make one! Anyone can make a channel")
   Message.create!(user_id: catlover.id, channel_id: c.id, body: "OK, did it. Join plz")
   Message.create!(user_id: longname.id, channel_id: c.id, body: "Hey all. Just joined. Almost 100% sure this is the longest username currently in existence")
   Message.create!(user_id: underscore.id, channel_id: c.id, body: "<-- shortest")
   Message.create!(user_id: josh.id, channel_id: c.id, body: "Very impressive, both of you")
   Message.create!(user_id: longname.id, channel_id: c.id, body: "I'm making a gardening channel, feel free to drop by")
-
+  Message.create!(user_id: nonsense.id, channel_id: c.id, body: "I tried to enter a bunch of special characters like ? and ; for my username, but it stopped me :(")
+  Message.create!(user_id: josh.id, channel_id: c.id, body: "Sorry, your username ends up in the URL if you DM someone (try it!) so it has to be URL-safe")
+  Message.create!(user_id: hmm.id, channel_id: c.id, body: "hmmm...")
   Message.create!(user_id: josh.id, channel_id: c.id, body: "Hey, new users: If you haven't already, check out the channel 'join_more_channels' for a tip ;)")
 
 c = Channel.create!(name: 'cats', channel_type: 'CHANNEL', creator_id: catlover.id, purpose: 'Talk here about your favorite animal, the cat')
@@ -98,5 +91,3 @@ c = Channel.create!(name: 'earworms', channel_type: 'CHANNEL', creator_id: qadir
 99.times do |i|
   User.create!(username: "guest_#{i + 1}", password: 'password')
 end
-
-Message.create!(user_id: josh.id, channel_id: general.id, body: 'Hello, #general!')
