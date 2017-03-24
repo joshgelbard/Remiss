@@ -59,9 +59,9 @@ class User < ApplicationRecord
 
   def join_default_channels
     general = Channel.find_by_name('general')
-    random = Channel.find_by_name('random')
+    jmc = Channel.find_by_name('join_more_channels')
     join_channel(general)
-    join_channel(random)
+    join_channel(jmc)
   end
 
   def name_validator
