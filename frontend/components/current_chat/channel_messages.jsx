@@ -17,8 +17,10 @@ const ChannelMessage = (props) => {
 
 class ChannelMessages extends React.Component {
 
-  componentWillUpdate() {
-    console.log(this);
+  componentDidUpdate() {
+    if (this.msgs){
+      this.msgs.scrollTop = 99999;
+    }
   }
 
   messagesList() {
@@ -32,9 +34,11 @@ class ChannelMessages extends React.Component {
   }
   render(){
     return (
-      <ul className='channel-messages'>
-        {this.messagesList()}
-      </ul>
+      <div className='channel-messages' ref={ r => {this.msgs = r;} }>
+        <ul>
+          {this.messagesList()}
+        </ul>
+      </div>
     );
   }
 }
