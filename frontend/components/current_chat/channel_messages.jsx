@@ -19,9 +19,7 @@ const ChannelMessage = (props) => {
 class ChannelMessages extends React.Component {
 
   componentDidUpdate() {
-    if (this.msgs){
-      this.msgs.scrollTop = 99999;
-    }
+    this.msgs.scrollTop = 99999;
   }
 
   messagesList() {
