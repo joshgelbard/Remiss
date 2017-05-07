@@ -11,13 +11,13 @@
 #
 
 class User < ApplicationRecord
+  validates :username, presence: true, uniqueness: true,
+    length: { minimum: 1, maximum: 20 }, format: /\A[a-zA-Z0-9_-]*\z/
+  validates :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
-  validates :password_digest, :session_token, :username, presence: true
-  validates :username, :session_token, uniqueness: true
+  validates :password_digest, presence: true
 
-  validate :name_validator
-
-  before_validation :ensure_session_token
+  after_initialize :ensure_session_token
   after_save :join_default_channels
 
   attr_reader :password
@@ -62,11 +62,6 @@ class User < ApplicationRecord
     jmc = Channel.find_by_name('join_more_channels')
     join_channel(general)
     join_channel(jmc)
-  end
-
-  def name_validator
-    errors.add(:name, 'must be 20 characters or shorter') if self.username.length > 20
-    errors.add(:name, 'must consist only of numbers, letters, - and _') unless /^[a-zA-Z0-9_-]*$/ =~ self.username
   end
 
 end
