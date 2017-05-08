@@ -11,8 +11,11 @@
 #
 
 class User < ApplicationRecord
-  validates :username, presence: true, uniqueness: true,
-    length: { minimum: 1, maximum: 20 }, format: /\A[a-zA-Z0-9_-]*\z/
+  validates :username,
+            presence: true,
+            uniqueness: true,
+            length: { minimum: 1, maximum: 20 },
+            format: /\A[a-zA-Z0-9_-]*\z/
   validates :session_token, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
   validates :password_digest, presence: true

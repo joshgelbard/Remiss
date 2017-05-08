@@ -10,12 +10,16 @@ RSpec.describe Api::UsersController, type: :controller do
       it "should persist a user to the database" do
         expect(User.exists?).to be(true)
       end
+      it "should log in the user" do
+        new_token = User.find_by_username('some_user').session_token
+        expect(session['session_token']).to eq(new_token)
+      end
     end
 
     context "with invalid params" do
       pw_too_short = { user: { username: 'some_user', password: '123' } }
       before { post :create, params: pw_too_short, format: 'json' }
-      
+
       it("should fail") { expect(response).not_to be_success }
       it "should not persist anything to the database" do
         expect(User.exists?).to be(false)
