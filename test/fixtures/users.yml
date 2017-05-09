@@ -13,11 +13,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: MyString
-  session_token: MyString
-  password_digest: MyString
+  username: user1
+  session_token: user1session
+  password_digest: password
 
 two:
-  username: MyString
-  session_token: MyString
-  password_digest: MyString
+  username: user2
+  session_token: user2session
+  password_digest: password

@@ -54,7 +54,10 @@ group :development do
 end
 
 group :test do
+  gem 'capybara'
+  gem 'launchy'
   gem 'rails-controller-testing'
+  gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
 

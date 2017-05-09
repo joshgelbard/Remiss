@@ -15,45 +15,45 @@ ActiveRecord::Schema.define(version: 20170323043855) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "channel_memberships", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "channel_id", null: false
+  create_table "channel_memberships", id: :serial, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "channel_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["channel_id"], name: "index_channel_memberships_on_channel_id", using: :btree
-    t.index ["user_id", "channel_id"], name: "index_channel_memberships_on_user_id_and_channel_id", unique: true, using: :btree
-    t.index ["user_id"], name: "index_channel_memberships_on_user_id", using: :btree
+    t.index ["channel_id"], name: "index_channel_memberships_on_channel_id"
+    t.index ["user_id", "channel_id"], name: "index_channel_memberships_on_user_id_and_channel_id", unique: true
+    t.index ["user_id"], name: "index_channel_memberships_on_user_id"
   end
 
-  create_table "channels", force: :cascade do |t|
-    t.string   "name",         null: false
-    t.string   "channel_type", null: false
-    t.text     "purpose"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "creator_id",   null: false
-    t.integer  "invitee_id"
-    t.index ["name"], name: "index_channels_on_name", unique: true, using: :btree
-  end
-
-  create_table "messages", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "channel_id", null: false
-    t.text     "body",       null: false
+  create_table "channels", id: :serial, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "channel_type", null: false
+    t.text "purpose"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["channel_id"], name: "index_messages_on_channel_id", using: :btree
-    t.index ["user_id"], name: "index_messages_on_user_id", using: :btree
+    t.integer "creator_id", null: false
+    t.integer "invitee_id"
+    t.index ["name"], name: "index_channels_on_name", unique: true
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "session_token",   null: false
-    t.string   "password_digest", null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["session_token"], name: "index_users_on_session_token", unique: true, using: :btree
-    t.index ["username"], name: "index_users_on_username", unique: true, using: :btree
+  create_table "messages", id: :serial, force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "channel_id", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_messages_on_channel_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "users", id: :serial, force: :cascade do |t|
+    t.string "username", null: false
+    t.string "session_token", null: false
+    t.string "password_digest", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_token"], name: "index_users_on_session_token", unique: true
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
 end

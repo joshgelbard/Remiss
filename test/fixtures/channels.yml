@@ -15,11 +15,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  channel_type: MyString
-  purpose: MyText
+  name: general
+  channel_type: CHANNEL
+  creator_id: 1
 
 two:
-  name: MyString
-  channel_type: MyString
-  purpose: MyText
+  name: testing_1
+  channel_type: CHANNEL
+  creator_id: 1
+
+three:
+  name: testing_2
+  channel_type: CHANNEL
+  creator_id: 1
+
+four:
+  name: random
+  channel_type: CHANNEL
+  creator_id: 1
