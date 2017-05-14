@@ -1,8 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
-import { logout } from '../actions/session_actions';
-import { channelsList } from '../reducers/selectors';
 import { receiveMessage } from '../actions/current_channel_actions';
 import App from './app';
 import AuthFormContainer from './auth_form/auth_form_container';
@@ -54,12 +52,7 @@ const Root = ({store}) => {
   };
 
   const _enterChannel = (nextState, replace) => {
-    const currentUser = store.getState().session.currentUser;
-    if (!currentUser) {
-      replace('/signin');
-    } else {
-      setSocket(nextState.params.channelName);
-    }
+    setSocket(nextState.params.channelName);
   };
 
   return (
@@ -67,13 +60,17 @@ const Root = ({store}) => {
       <Router history={ hashHistory }>
         <Route path='/' component={ App }>
           <IndexRoute onEnter={ _indexRedirect } />
-          <Route path='/messages/:channelName' component={ HomeScreenContainer } onEnter={_enterChannel}/>
-          <Route path='/messages' onEnter={_messagesRedirect} />
-          <Route path='/signup' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn } />
-          <Route path='/signin' component={ AuthFormContainer } onEnter={ _redirectIfLoggedIn }  />
-          <Route path='/new-channel' component={ NewChannelFormContainer } onEnter={ _redirectUnlessLoggedIn } />
-          <Route path='/browse-channels' component={ BrowseChannelsFormContainer } onEnter={ _redirectUnlessLoggedIn } />
-          <Route path='/conversations' component={ ConversationChooserContainer } onEnter={ _redirectUnlessLoggedIn} />
+          <Route onEnter={ _redirectIfLoggedIn }>
+            <Route path='/signup' component={ AuthFormContainer }/>
+            <Route path='/signin' component={ AuthFormContainer }/>
+          </Route>
+          <Route onEnter={ _redirectUnlessLoggedIn }>
+            <Route path='/new-channel' component={ NewChannelFormContainer }/>
+            <Route path='/browse-channels' component={ BrowseChannelsFormContainer }/>
+            <Route path='/conversations' component={ ConversationChooserContainer }/>
+            <Route path='/messages/:channelName' component={ HomeScreenContainer } onEnter={_enterChannel}/>
+            <Route path='/messages' onEnter={_messagesRedirect} />
+          </Route>
         </Route>
       </Router>
     </Provider>
