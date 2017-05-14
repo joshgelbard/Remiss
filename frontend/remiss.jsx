@@ -5,8 +5,6 @@ import { logout } from './actions/session_actions';
 import { createChannel, receiveChannel } from './actions/channel_actions';
 import Root from './components/root.jsx';
 
-const windowFunctions = { logout, createChannel, receiveChannel };
-
 document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let store;
@@ -17,5 +15,4 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
   ReactDOM.render(<Root store={ store }/> , root);
-  Object.assign(window, windowFunctions, { store });
 });
