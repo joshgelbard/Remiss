@@ -4,7 +4,10 @@ RSpec.describe Api::UsersController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       ok_params = { user: { username: 'some_user', password: 'password' } }
-      before { post :create, params: ok_params, format: 'json' }
+      before do
+        User.destroy_all
+        post :create, params: ok_params, format: 'json'
+      end
 
       it("should succeed") { expect(response).to be_success }
       it "should persist a user to the database" do
@@ -18,7 +21,10 @@ RSpec.describe Api::UsersController, type: :controller do
 
     context "with invalid params" do
       pw_too_short = { user: { username: 'some_user', password: '123' } }
-      before { post :create, params: pw_too_short, format: 'json' }
+      before do
+        User.destroy_all
+        post :create, params: pw_too_short, format: 'json'
+      end
 
       it("should fail") { expect(response).not_to be_success }
       it "should not persist anything to the database" do
