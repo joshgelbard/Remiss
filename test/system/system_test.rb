@@ -28,5 +28,20 @@ class SystemTest < ApplicationSystemTestCase
     end
     assert_text "hi sarah!"
   end
-  
+
+  test "creating a new channel" do
+    User.create(username: 'aoeu123', password: 'password')
+    visit '/#/signin'
+    fill_in 'username', with: 'aoeu123'
+    fill_in 'password', with: 'password'
+    click_on 'Sign in'
+
+    within('div', class: 'channels-index-header', match: :first) do
+      find('i', class: ['fa', 'fa-plus-circle']).click
+    end
+    fill_in 'Name', with: 'some_new_channel'
+    click_on 'Create Channel'
+    assert_selector(:xpath, '//input[@placeholder="Message #some_new_channel"]')
+  end
+
 end
