@@ -19,12 +19,12 @@ class Api::ChannelsController < ApplicationController
   end
 
   def index
-    @channels = Channel.all
+    @channels = Channel.includes(:members).all
     render :index
   end
 
   def show
-    @channel = Channel.find_by_name(params[:id])
+    @channel = Channel.includes(:members, messages: [:author]).find_by_name(params[:id])
     render :show
   end
 
