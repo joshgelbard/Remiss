@@ -21,7 +21,7 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
 
   after_initialize :ensure_session_token
-  after_save :join_default_channels
+  after_create :join_default_channels
 
   attr_reader :password
 
