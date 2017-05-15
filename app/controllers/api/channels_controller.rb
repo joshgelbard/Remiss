@@ -19,7 +19,7 @@ class Api::ChannelsController < ApplicationController
   end
 
   def index
-    @channels = Channel.includes(:members).all
+    @channels = Channel.includes(:members, :creator).all
     render :index
   end
 
