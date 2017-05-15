@@ -6,6 +6,11 @@
     json.channel_type channel.channel_type
     json.creator channel.creator.username
     json.created_at channel.created_at.strftime("%b %d, %Y")
-    json.members channel.members, partial: 'api/users/user', as: :user
+    json.members do
+      json.array! channel.members do |user|
+        json.id user.id
+        json.username user.username
+      end
+    end
   end
 end
