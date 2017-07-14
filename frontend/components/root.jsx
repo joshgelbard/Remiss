@@ -30,7 +30,7 @@ const Root = ({store}) => {
     if (currentUser) {
       replace('/messages');
     } else {
-      replace('/signin');
+      replace('/signup');
     }
   };
 
